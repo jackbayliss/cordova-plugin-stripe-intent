@@ -191,9 +191,9 @@ private static final class PayCallback implements Callback {
                     activity.runOnUiThread(() -> {
                         Toast.makeText(activity,
                                 "BIG SUCCESS", Toast.LENGTH_LONG).show();
-                                Intent i = new Intent(StripeIntent.this, ActivityNamePrompt.class);
-                                i.putExtra("name", "test"); // pass arbitrary data to launched activity
-                                startActivityForResult(i, REQUEST_CODE);
+//                                 Intent i = new Intent(StripeIntent.this, ActivityNamePrompt.class);
+//                                 i.putExtra("name", "test"); // pass arbitrary data to launched activity
+//                                 startActivityForResult(i, REQUEST_CODE);
                     });
                 }
             }
