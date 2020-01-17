@@ -1,5 +1,5 @@
 # cordova-plugin-stripe-intent
- Cordova Stripe Plugin specifically for the new Intent API, working.
+ Cordova Stripe Plugin specifically for the new Intent API, this plugin handles 3DS authentication and general payments using Strong Customer Authentication.
 
 ## Why?
 There is currently no way to integrate a Hybrid Ionic / Cordova application with Stripe for payment intents (Required for SCA). This fixes that.
