@@ -1,0 +1,17 @@
+{
+  "name": "cordova-stripe-intent",
+  "version": "0.0.1",
+  "description": "Stripe Intent Plugin for Cordova",
+  "cordova": {
+    "id": "cordova-stripe-intent",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Jack Bayliss",
+  "license": "MIT"
+}
