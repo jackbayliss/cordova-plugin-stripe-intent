@@ -8,10 +8,6 @@
       "android"
     ]
   },
-  "dependencies": {
-    "cordova-plugin-androidx": "^1.1.2",
-    "cordova-plugin-androidx-adapter" : "^1.1.0"
-  },
   "keywords": [
     "ecosystem:cordova",
     "cordova-android"
