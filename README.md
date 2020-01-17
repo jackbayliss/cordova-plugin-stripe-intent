@@ -17,6 +17,22 @@ Or, download the latest release and unpack it into folder and then do the follow
 ionic cordova plugin add ../FolderName
 ```
 You can then build you app, and fingers crossed it will work fine.
+# Methods
+
+### addBackendUrl(successCallback, errorCallback)
+```js
+window.cordova.plugins.StripeIntent.addBackendUrl("BACKEND_URL_HERE",function(test){console.log(test)},function(test){console.log(test)})
+```
+
+### addPushableKey(successCallback, errorCallback)
+```js
+window.cordova.plugins.StripeIntent.addPushableKey("KEY_HERE",function(test){console.log(test)},function(test){console.log(test)})
+```
+### createIntent(successCallback, errorCallback)
+This method is for creating the activity. It'll give you an error callback if you haven't added a pusable key or backendurl.
+```js
+window.cordova.plugins.StripeIntent.createIntent("",function(test){console.log(test)},function(test){console.log(test)})
+```
 
 ## What is the backend?
 
