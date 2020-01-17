@@ -3,7 +3,7 @@
 
 ## Why?
 
-There is currently no way to integrate a Hybrid Ionic / Cordova application with Stripe for payment intents. This fixes that.
+There is currently no way to integrate a Hybrid Ionic / Cordova application with Stripe for payment intents (Required for SCA). This fixes that.
 
 ## Requirements
 Currently only on Android, and extremely experimental - I have this working on Android 9.0.
