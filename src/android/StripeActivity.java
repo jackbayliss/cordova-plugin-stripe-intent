@@ -46,7 +46,7 @@ public class StripeActivity extends Activity {
     private CardInputWidget widget;
     private String stripePushableKey = "pk_test_DakHBX2TZX5mIjEvVnZ4Fytx";
     private String paymentIntentClientSecret;
-    private String BACKEND_URL;
+    private String BACKEND_URL = "https://google.com";
     public String package_name;
     private OkHttpClient httpClient = new OkHttpClient();
     private Stripe stripe;
