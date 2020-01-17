@@ -16,9 +16,11 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.content.Intent;
+import com.jackbayliss.stripeintent.StripeActivity;
+import static android.app.Activity.RESULT_OK;
 
 public class StripeIntent extends CordovaPlugin implements StripeActivity.Listener {
-    
+
     private ViewParent webViewParent;
     private CallbackContext callback = null;
     private String appResourcesPackage;
@@ -27,12 +29,16 @@ public class StripeIntent extends CordovaPlugin implements StripeActivity.Listen
     private int containerViewId = 50;
     private String apiUserId;
     private String apiToken;
+    private String BACKEND_URL = null;
+    private String stripePushableKey = null;
+
+
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
     }
-    
 
-    
+
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         Context context = cordova.getActivity().getApplicationContext();
@@ -40,36 +46,40 @@ public class StripeIntent extends CordovaPlugin implements StripeActivity.Listen
         if(action.equals("StripeActivity")) {
             String message = args.getString(0);
             this.openNewActivity(message,context);
-            callbackContext.success("Activity Started");
             return true;
 
         }else if(action.equals("AddBackendUrl")) {
-          
-          String backendurl = args.getString(0);
-           activity.AddBackendUrl(backendurl);
-           callbackContext.success("Stored");
-          return true;
+            String backendurl = args.getString(0);
+            this.BACKEND_URL = backendurl;
+            callbackContext.success("Backend Url stored");
+            return true;
+        }else if(action.equals("addPushableKey")) {
+            String pushableKey = args.getString(0);
+            this.stripePushableKey = pushableKey;
+            callbackContext.success("Pushable key stored");
+            return true;
         }
         return false;
     }
     private Intent intent;
     private void openNewActivity(String name,Context context) {
-      Intent intent = new Intent(context, StripeActivity.class);
-      cordova.startActivityForResult(this, new Intent(intent), 0);
-
-}
-
-
-public void onPaymentSuccess(Boolean completed) {
-  PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, completed);
-  pluginResult.setKeepCallback(true);
-  paymentCallbackContext.sendPluginResult(pluginResult);
-}
+        if(this.BACKEND_URL==null || this.stripePushableKey==null){
+            callback.error("Please add a backend URL and your pushable API key before opening the payment activity.");
+        }else{
+            Intent intent = new Intent(context, StripeActivity.class);
+            intent.putExtra("BACKEND_URL", this.BACKEND_URL);
+            intent.putExtra("stripePushableKey", this.stripePushableKey);
+            cordova.startActivityForResult(this, new Intent(intent), 0);
+        }
 
 
+    }
 
-
- 
-
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode==0 && this.cordova.getActivity().RESULT_OK==resultCode) {
+            callback.success("Success");
+        }
+    }
 }

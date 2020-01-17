@@ -13,5 +13,6 @@
     "cordova-android"
   ],
   "author": "Jack Bayliss",
-  "license": "MIT"
+  "license": "MIT",
+  "typings": "typings/StripeIntent.d.ts"
 }

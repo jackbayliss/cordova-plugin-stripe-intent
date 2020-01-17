@@ -44,9 +44,9 @@ public class StripeActivity extends Activity {
 
     private static final String TAG = StripeActivity.class.getSimpleName();
     private CardInputWidget widget;
-    private String stripePushableKey = "pk_test_DakHBX2TZX5mIjEvVnZ4Fytx";
     private String paymentIntentClientSecret;
-    public String BACKEND_URL = "https://google.com";
+    private String BACKEND_URL;
+    private String stripePushableKey;
     public String package_name;
     private OkHttpClient httpClient = new OkHttpClient();
     private Stripe stripe;
@@ -57,6 +57,10 @@ public class StripeActivity extends Activity {
     }
 @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Get backend url passed in.
+        this.BACKEND_URL = getIntent().getExtras().getString("BACKEND_URL");
+        this.stripePushableKey = getIntent().getExtras().getString("stripePushableKey");
+
         super.onCreate(savedInstanceState);
         PaymentConfiguration.init(
           getApplicationContext(),
@@ -191,9 +195,8 @@ private static final class PayCallback implements Callback {
                     activity.runOnUiThread(() -> {
                         Toast.makeText(activity,
                                 "BIG SUCCESS", Toast.LENGTH_LONG).show();
-                                // Intent i = new Intent(this, StripeIntent.class);
-                                // i.putExtra("name", "test"); // pass arbitrary data to launched activity
-                                // activity.startActivityForResult(i, 0);
+                                activity.finishWithResult();
+                        
                     });
                 }
             }
@@ -264,11 +267,13 @@ public void onError(@NonNull Exception e) {
 }
 }
 
-public Boolean AddBackendUrl(String backendurl){
-    this.BACKEND_URL = backendurl;
-    return true;
-}
 
+private void finishWithResult()
+    {
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 
 }
 
