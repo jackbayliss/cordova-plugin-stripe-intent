@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-stripe-intent" version="0.0.1">
+   <name>StripeIntent</name>
+   <js-module name="StripeIntent" src="www/StripeIntent.js">
+      <clobbers target="cordova.plugins.StripeIntent" />
+   </js-module>
+       <framework src="plugin.gradle" custom="true" type="gradleReference" />
+   <platform name="android">
+      <config-file parent="/*" target="res/xml/config.xml">
+         <feature name="StripeIntent">
+            <param name="android-package" value="com.jackbayliss.stripeintent.StripeIntent" />
+         </feature>
+         <feature name="StripeActivity">
+            <param name="android-package" value="com.jackbayliss.stripeintent.StripeActivity" />
+         </feature>
+      </config-file>
+      <config-file parent="/*" target="AndroidManifest.xml" />
+      <source-file src="src/android/StripeIntent.java" target-dir="src/com/jackbayliss/stripeintent/StripeIntent" />
+      <source-file src="src/android/StripeActivity.java" target-dir="src/com/jackbayliss/stripeintent/StripeActivity" />
+      <source-file src="src/android/layout/colors.xml" target-dir="app/src/main/res/values/" />
+      <source-file src="src/android/layout/activity_intent.xml" target-dir="res/layout" />
+      <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="StripeIntent">
+        <param name="android-package" value="com.jackbayliss.stripeintent.StripeIntent" />
+        <param name="onload" value="true"/>
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+         <activity android:name="com.jackbayliss.stripeintent.StripeIntent"  android:screenOrientation="portrait"/>
+         <activity android:name="com.jackbayliss.stripeintent.StripeActivity"  android:screenOrientation="portrait"/>
+    </config-file>
+
+       <config-file target="AndroidManifest.xml" parent="/manifest">
+      <!-- <uses-permission android:name="android.permission.FLASHLIGHT"></uses-permission>
+         <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+         <uses-permission android:name="android.permission.RECORD_AUDIO" />
+         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+         <uses-feature android:name="android.hardware.location.gps" />
+         <uses-feature android:name="android.hardware.camera.flash" /> -->
+    </config-file>
+
+  </platform>
+
+</plugin>
