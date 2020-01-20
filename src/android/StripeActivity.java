@@ -115,7 +115,7 @@ public class StripeActivity extends Activity {
   }
 
   private void pay(@Nullable String paymentMethodId, @Nullable String paymentIntentId) {
-    final MediaType mediaType = MediaType.get("application/json; charset=utf-8");
+    final MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
     final String json;
     if (paymentMethodId != null) {
         json = "{"
@@ -131,7 +131,7 @@ public class StripeActivity extends Activity {
                 + "\"paymentIntentId\":" +  "\"" + paymentIntentId + "\""
                 + "}";
     }
-    RequestBody body = RequestBody.create(json, mediaType);
+    RequestBody body = RequestBody.create(mediaType,json);
     Request request = new Request.Builder()
             .url(BACKEND_URL)
             .post(body)
