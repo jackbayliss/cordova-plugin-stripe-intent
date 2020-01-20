@@ -1,6 +1,6 @@
 {
   "name": "cordova-stripe-intent",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Stripe Intent Plugin for Cordova",
   "cordova": {
     "id": "cordova-stripe-intent",
