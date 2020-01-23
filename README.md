@@ -1,5 +1,11 @@
 # cordova-plugin-stripe-intent
  Cordova Stripe Plugin specifically for the new Intent API, this plugin handles 3DS authentication and general payments using Strong Customer Authentication.
+ 
+ This gives the ability for Ionic to work with Stripe Payment Intents.
+ 
+## Working Example
+
+Please see [here](https://github.com/jackbayliss/cordova-plugin-stripe-intent/tree/master/working-example) for a working example.
 
 ## Why?
 There is currently no way to integrate a Hybrid Ionic / Cordova application with Stripe for payment intents (Required for SCA). This fixes that.
@@ -16,7 +22,7 @@ Or, download the latest release and unpack it into folder and then do the follow
 ```
 ionic cordova plugin add ../FolderName
 ```
-You can then build you app, and fingers crossed it will work fine.
+You can then build your app, and fingers crossed it will work fine.
 # Methods
 
 ### addBackendUrl(successCallback, errorCallback)
@@ -39,7 +45,7 @@ window.cordova.plugins.StripeIntent.createIntent("",function(test){console.log(t
 You can find the backend code [HERE](https://github.com/stripe-samples/accept-a-card-payment/blob/master/without-webhooks/server/php/public/pay.php) 
 
 ## Issues
-if you have an issue, please feel free to create one.
+if you have any issues, please feel free to create one.
 
 
 ## Todo 
